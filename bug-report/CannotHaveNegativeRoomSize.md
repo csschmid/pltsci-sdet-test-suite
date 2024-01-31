@@ -28,3 +28,5 @@ It is expected that a 400, non-retryable error is generated to let the user know
 
 Allowing negative numbers allows for a starting coordinate to be placed "outside" the room, invalidating the execution
 of instructions
+
+This is a blocking issue as invalid values may lead to undefined behavior

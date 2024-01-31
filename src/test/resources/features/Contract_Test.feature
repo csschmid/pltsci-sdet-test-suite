@@ -21,19 +21,17 @@ Feature: Tests
       | 12     | [3, 3]   | [1, 1]        | [[0, 0]]                 | W            | [0, 1]      | 0          | 200      |
       | 13     | [1, 1]   | [1, 1]        | [[0, 0]]                 | NESSWWNNES   | N\A         | -1         | 400      |
 
-
   Scenario Outline: Test Plan - Happy Path: number <number>
     Given I provide the following cleaning session request: "<roomSize>" "<startLocation>" "<patches>" "<instructions>"
     When I create a cleaning scenario
     Then I get the following expected output: <httpCode> "<endLocation>" "<patchCount>"
     Examples:
       | number | roomSize | startLocation | patches          | instructions | endLocation | patchCount | httpCode |
-      | 1      | [0, 0]   | []            | []               | N            | []          | 0          | 200      |
-      | 2      | [1, 1]   | [0, 0]        | []               | N            | [0, 0]      | 0          | 200      |
-      | 3      | [1, 1]   | [0, 0]        | [[0, 0]]         | N            | [0, 0]      | 1          | 200      |
-      | 4      | [1, 1]   | [0, 0]        | [[0, 0], [0, 0]] | N            | [0, 0]      | 1          | 200      |
-      | 5      | [1, 1]   | [0, 0]        | [[0, 0]]         |              | [0, 0]      | 0          | 200      |
-      | 6      | [1, 2]   | [0, 0]        | [[0, 1]]         | NSNSNSNS     | [0, 0]      | 1          | 200      |
+      | 1      | [1, 1]   | [0, 0]        | []               | N            | [0, 0]      | 0          | 200      |
+      | 2      | [1, 1]   | [0, 0]        | [[0, 0]]         | N            | [0, 0]      | 1          | 200      |
+      | 3      | [1, 1]   | [0, 0]        | [[0, 0], [0, 0]] | N            | [0, 0]      | 1          | 200      |
+      | 4      | [1, 1]   | [0, 0]        | [[0, 0]]         |              | [0, 0]      | 0          | 200      |
+      | 5      | [1, 2]   | [0, 0]        | [[0, 1]]         | NSNSNSNS     | [0, 0]      | 1          | 200      |
 
   Scenario Outline: Test Plan - Sad Path: number <number>
     Given I provide the following cleaning session request: "<roomSize>" "<startLocation>" "<patches>" "<instructions>"
@@ -55,7 +53,7 @@ Feature: Tests
       | 12     | [1,1]    | [0, 0]        | [[0, 0], null]   | N            | N/A         | -1         | 400      |
       | 13     | [1,1]    | [0, 0]        | [[0, 0]]         | null         | N/A         | -1         | 400      |
 
-  Scenario Outline: Test Plan - Sad Path
+  Scenario Outline: Test Plan - Sad Path: number <number>
     Given I provide the following json: '<jsonRequest>'
     When I create a cleaning scenario
     Then I get the following expected output: <httpCode> "<endLocation>" "<patchCount>"
@@ -74,3 +72,4 @@ Feature: Tests
       | 24     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0, 0]],"instructions":"news"}      | N/A         | -1         | 400      |
       | 25     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0, 0]],"instructions":"cool"}      | N/A         | -1         | 400      |
       | 26     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0, 0]],"instructions":"☺"}         | N/A         | -1         | 400      |
+      | 27     | {"roomSize":[0 ,0],"coords":[],"patches":[],"instructions":"N"}  | N/A         | -1         | 400      |

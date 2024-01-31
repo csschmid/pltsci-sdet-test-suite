@@ -70,12 +70,11 @@ Validate the correctness of the cleaning service.
 
 #### Happy Path
 
-1. Empty room
-2. 1x1 room with no patches
-3. 1x1 room with patches
-4. 1x1 room with duplicate patches
-5. Empty instructions
-6. Enter and leave patch multiple times
+1. 1x1 room with no patches
+2. 1x1 room with patches
+3. 1x1 room with duplicate patches
+4. Empty instructions
+5. Enter and leave patch multiple times
 
 #### Sad Path
 
@@ -105,6 +104,7 @@ Validate the correctness of the cleaning service.
 24. Instructions containing lowercase valid letters
 25. Instructions containing invalid letters
 26. Instructions containing unicode letters
+27. Empty room
 
 ## Appendix
 
