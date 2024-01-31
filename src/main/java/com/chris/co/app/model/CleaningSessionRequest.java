@@ -19,6 +19,10 @@ public class CleaningSessionRequest extends PojoBase {
         this.roomSize = parseIntArray(roomSize);
         this.coords = parseIntArray(coords);
         this.patches = parse2DIntArray(patches);
-        this.instructions = instructions;
+        if(instructions == null || "null".equals(instructions)) {
+            this.instructions = null;
+        } else {
+            this.instructions = instructions;
+        }
     }
 }

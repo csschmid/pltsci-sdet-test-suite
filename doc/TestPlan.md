@@ -75,33 +75,36 @@ Validate the correctness of the cleaning service.
 3. 1x1 room with patches
 4. 1x1 room with duplicate patches
 5. Empty instructions
+6. Enter and leave patch multiple times
 
 #### Sad Path
 
 1. Null roomSize
 2. Empty roomSize with 1 patch
 3. Empty roomSize with duplicate patches
-4. Negative room size
-5. Negative x coord value
-6. Negative y coord value
-7. x Coord value larger than roomSize
-8. y Coord value larger than roomSize
-9. x RoomSize larger than an integer value
-10. y RoomSize larger than an integer value
-11. x Coordinate larger than an integer value
-12. y Coordinate larger than an integer value
-12. Three values for roomSize
-13. One value for roomSize
-14. Three values for coords
-15. One value for coords
-16. Null patches array entry
-17. Null patches total array
-18. Three values for patches entry
-19. One value for patches entry
-20. Null instructions
-21. Instructions containing lowercase valid letters
-22. Instructions containing invalid letters
-23. Instructions containing unicode letters
+4. Negative x room size
+5. Negative y room size
+6. Negative x coord value
+7. Negative y coord value
+8. x Coord value larger than roomSize
+9. y Coord value larger than roomSize
+10. null coord value
+11. null patches
+12. Null patches array entry
+13. Null instructions
+14. x roomSize larger than an integer value
+15. y roomSize larger than an integer value
+16. x Coordinate larger than an integer value
+17. y Coordinate larger than an integer value
+18. Three values for roomSize
+19. One value for roomSize
+20. Three values for coords
+21. One value for coords
+22. Three values for patches entry
+23. One value for patches entry
+24. Instructions containing lowercase valid letters
+25. Instructions containing invalid letters
+26. Instructions containing unicode letters
 
 ## Appendix
 

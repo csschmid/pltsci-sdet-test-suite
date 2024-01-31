@@ -27,16 +27,16 @@ public class CukeSteps {
 
     @Given("I provide the following cleaning session request: {string} {string} {string} {string}")
     public void provideCleaningSessionRequest(String roomSize,
-                                                           String coords,
-                                                           String patches,
-                                                           String instructions) throws JsonProcessingException {
+                                              String coords,
+                                              String patches,
+                                              String instructions) throws JsonProcessingException {
         cleaningSessionRequest = new CleaningSessionRequest(roomSize, coords, patches, instructions);
         request = cleaningSessionRequest.toJson();
     }
 
     @Given("I provide the following json: {string}")
-    public void provideRawJson(String json){
-        request = json;
+    public void provideRawJson(String jsonRequest) {
+        request = jsonRequest;
     }
 
     @When("I create a cleaning scenario")

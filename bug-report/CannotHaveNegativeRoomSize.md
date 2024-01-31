@@ -22,7 +22,7 @@ The following constraints follow from the spec:
 
 ## Expectation
 
-The lower left corner (south-western) should be `[0, 0]`. Therefor, there should be no coordinates less than `0`.
+It is expected that a 400, non-retryable error is generated to let the user know their input was incorrect. The lower left corner (south-western) should be `[0, 0]`. Therefor, there should be no coordinates less than `0`.
 
 ## Impact
 
