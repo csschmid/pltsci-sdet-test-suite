@@ -9,7 +9,16 @@ public abstract class PojoBase<T> {
         return mapper.writeValueAsString(this);
     }
 
-    public <T extends PojoBase> T fromJson(String jsonString) throws JsonProcessingException {
-        return (T) new ObjectMapper().readValue(jsonString, this.getClass());
+    public static <T extends PojoBase> T fromJson(String jsonString, Class clazz) throws JsonProcessingException {
+        return (T) new ObjectMapper().readValue(jsonString, clazz);
+    }
+
+    @Override
+    public String toString() {
+        try {
+            return this.toJson();
+        } catch (JsonProcessingException e) {
+            return super.toString();
+        }
     }
 }

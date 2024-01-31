@@ -6,16 +6,13 @@ import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingExcept
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
-import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import org.omg.CORBA.BAD_CONTEXT;
 
-import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.head;
+import java.util.Optional;
 
 @Getter
 @Builder
@@ -32,16 +29,18 @@ public class CleaningSessionAPI {
             new Header("Content-Type", "application/json")
     );
 
-    public CleaningSessionResponse createCleaningSession(CleaningSessionRequest request) throws JsonProcessingException {
-        Response response = createCleaningSession(DEFAULT_HEADERS, request.toJson());
-        return (CleaningSessionResponse) CleaningSessionResponse.builder().build().fromJson(response.getBody().asString());
+    public Response createCleaningSession(CleaningSessionRequest request) throws JsonProcessingException {
+        return createCleaningSession(Optional.of(DEFAULT_HEADERS), request.toJson());
     }
 
-    public Response createCleaningSession(Headers headers, String json) {
+    public Response createCleaningSession(Optional<Headers> headers, String json ) {
+        if(!headers.isPresent()) {
+            headers = Optional.of(DEFAULT_HEADERS);
+        }
         RestAssured.baseURI = "http://" + BASE_URL;
         RequestSpecification reqSpec = RestAssured.given();
         reqSpec.port(PORT)
-                .headers(headers)
+                .headers(headers.get())
                 .body(json);
         return reqSpec.when().post(cleaningSessionEndpoint);
     }
