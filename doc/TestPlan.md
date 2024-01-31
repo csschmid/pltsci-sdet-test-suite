@@ -11,16 +11,16 @@ Validate the correctness of the cleaning service.
 1. Input requirements
     1. Input should be a json payload of the type
         1. ```JSON
-       {
-       "roomSize" : [<int>, <int>],
-       "coords" : [<int>, <int>],
-       "patches": [
-       [<int>, <int>],
-       ...
-       ],
-       "instructions" : "[N|S|E|W]*"
-       }
-          ```
+           {
+               "roomSize" : [<int>, <int>],
+               "coords" : [<int>, <int>],
+               "patches": [
+                   [<int>, <int>],
+                   ...
+               ],
+               "instructions" : "[N|S|E|W]*"
+           }
+           ```
     2. Constraints
         1. `0 <= roomSize[0] <= Integer.MAX_SIZE`
         2. `0 <= roomSize[1] <= Integer.MAX_SIZE`
@@ -31,11 +31,11 @@ Validate the correctness of the cleaning service.
 2. Output requirements
     1. Output should be a json payload of the type
         1. ```JSON
-       {
-       "coords" : [<int>, <int>],
-       "patches" : <int>
-       }
-         ```
+           {
+               "coords" : [<int>, <int>],
+               "patches" : <int>
+           }
+           ```
     2. Constraints
         1. `0 <= coords[0] <= roomSize[0]`
         2. `0 <= coords[1] <= roomSize[1]`
@@ -142,4 +142,4 @@ Validate the correctness of the cleaning service.
 ### Resources
 
 - [Original Assignment](https://bitbucket.org/platformscience/pltsci-sdet-assignment/src/main/)
-- [GitHub Solution]()
+- [GitHub Solution](https://github.com/csschmid/pltsci-sdet-test-suite/tree/main)
