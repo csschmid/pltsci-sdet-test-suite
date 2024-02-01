@@ -1,6 +1,6 @@
 ## Problem
 
-Values for `coord` which are larger than roomSize, should result in a 400 user error code.
+Values for `coord` which are larger than `roomSize`, should result in a 400 user error code.
 
 ## More Information
 

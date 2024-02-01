@@ -1,6 +1,6 @@
 ## Problem
 
-Negative `x` value for roomSize should result in a 400 user error code.
+Negative `x` values for `roomSize` should result in a 400 user error code.
 
 ## More Information
 

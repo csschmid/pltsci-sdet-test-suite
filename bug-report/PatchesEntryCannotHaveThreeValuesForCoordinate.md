@@ -1,6 +1,6 @@
 ## Problem
 
-Entering 3 values for a patch location should result in a 400 user error code.
+Entering 3 values for a `patches` entry should result in a 400 user error code.
 
 ## More Information
 
