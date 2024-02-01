@@ -89,22 +89,21 @@ Validate the correctness of the cleaning service.
 9. y Coord value larger than roomSize
 10. null coord value
 11. null patches
-12. Null patches array entry
-13. Null instructions
-14. x roomSize larger than an integer value
-15. y roomSize larger than an integer value
-16. x Coordinate larger than an integer value
-17. y Coordinate larger than an integer value
-18. Three values for roomSize
-19. One value for roomSize
-20. Three values for coords
-21. One value for coords
-22. Three values for patches entry
-23. One value for patches entry
-24. Instructions containing lowercase valid letters
-25. Instructions containing invalid letters
-26. Instructions containing unicode letters
-27. Empty room
+12. null instructions
+13. x roomSize larger than an integer value
+14. y roomSize larger than an integer value
+15. x Coordinate larger than an integer value
+16. y Coordinate larger than an integer value
+17. Three values for roomSize
+18. One value for roomSize
+19. Three values for coords
+20. One value for coords
+21. Three values for patches entry
+22. One value for patches entry
+23. Instructions containing lowercase valid letters
+24. Instructions containing invalid letters
+25. Instructions containing unicode letters
+26. Empty room
 
 ## Appendix
 

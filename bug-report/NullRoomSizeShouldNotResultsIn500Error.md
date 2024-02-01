@@ -1,6 +1,6 @@
 ## Problem
 
-Entering `null` value for `roomSize` should not result in a 500 error.
+Entering `null` value for `roomSize` should not result in a 500 server error code, but instead a 400 user error code.
 
 ## More Information
 

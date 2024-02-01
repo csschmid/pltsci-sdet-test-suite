@@ -1,5 +1,8 @@
 Feature: Tests
   Functional Testing for API
+  # Author's note: `numbers` added here correspond with the TestPlan for illustrative purposes.
+  # The maintenance of such `numbers` becomes problematic as entries are added and removed over time and
+  # so should be excluded from actual executing code (non assignment). Here it serves to make the intent of the tests more clear.
 
   Scenario Outline: Functional Testing: number <number>
     Given I provide the following cleaning session request: "<roomSize>" "<startLocation>" "<patches>" "<instructions>"
@@ -32,6 +35,7 @@ Feature: Tests
       | 3      | [1, 1]   | [0, 0]        | [[0, 0], [0, 0]] | N            | [0, 0]      | 1          | 200      |
       | 4      | [1, 1]   | [0, 0]        | [[0, 0]]         |              | [0, 0]      | 0          | 200      |
       | 5      | [1, 2]   | [0, 0]        | [[0, 1]]         | NSNSNSNS     | [0, 0]      | 1          | 200      |
+      | 6      | [1,1]    | [0, 0]        | [[0, 0], null]   | N            | [0, 0]      | 1          | 200      |
 
   Scenario Outline: Test Plan - Sad Path: number <number>
     Given I provide the following cleaning session request: "<roomSize>" "<startLocation>" "<patches>" "<instructions>"
@@ -50,8 +54,7 @@ Feature: Tests
       | 9      | [2, 2]   | [1, 3]        | []               | N            | N/A         | -1         | 400      |
       | 10     | [1, 1]   | null          | []               | N            | N/A         | -1         | 400      |
       | 11     | [1,1]    | [0, 0]        | null             | N            | N/A         | -1         | 400      |
-      | 12     | [1,1]    | [0, 0]        | [[0, 0], null]   | N            | N/A         | -1         | 400      |
-      | 13     | [1,1]    | [0, 0]        | [[0, 0]]         | null         | N/A         | -1         | 400      |
+      | 12     | [1,1]    | [0, 0]        | [[0, 0]]         | null         | N/A         | -1         | 400      |
 
   Scenario Outline: Test Plan - Sad Path: number <number>
     Given I provide the following json: '<jsonRequest>'
@@ -59,17 +62,17 @@ Feature: Tests
     Then I get the following expected output: <httpCode> "<endLocation>" "<patchCount>"
     Examples:
       | number | jsonRequest                                                                       | endLocation | patchCount | httpCode |
-      | 14     | {"roomSize":[2147483648 ,1],"coords":[0,0],"patches":[[0,0]],"instructions":"N"}  | N/A         | -1         | 400      |
-      | 15     | {"roomSize":[1, 2147483648],"coords":[0,0],"patches":[[0,0]],"instructions":"N"}  | N/A         | -1         | 400      |
-      | 16     | {"roomSize":[1, 1],"coords":[2147483648,0],"patches":[[0,0]],"instructions":"N"}  | N/A         | -1         | 400      |
-      | 17     | {"roomSize":[1, 1],"coords":[0, 2147483648],"patches":[[0,0]],"instructions":"N"} | N/A         | -1         | 400      |
-      | 18     | {"roomSize":[1, 1, 1],"coords":[0, 0],"patches":[[0,0]],"instructions":"N"}       | N/A         | -1         | 400      |
-      | 19     | {"roomSize":[1],"coords":[0, 0],"patches":[[0,0]],"instructions":"N"}             | N/A         | -1         | 400      |
-      | 20     | {"roomSize":[1, 1],"coords":[0, 0, 0],"patches":[[0,0]],"instructions":"N"}       | N/A         | -1         | 400      |
-      | 21     | {"roomSize":[1, 1],"coords":[0],"patches":[[0,0]],"instructions":"N"}             | N/A         | -1         | 400      |
-      | 22     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0,0,0]],"instructions":"N"}        | N/A         | -1         | 400      |
-      | 23     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0]],"instructions":"N"}            | N/A         | -1         | 400      |
-      | 24     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0, 0]],"instructions":"news"}      | N/A         | -1         | 400      |
-      | 25     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0, 0]],"instructions":"cool"}      | N/A         | -1         | 400      |
-      | 26     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0, 0]],"instructions":"☺"}         | N/A         | -1         | 400      |
-      | 27     | {"roomSize":[0 ,0],"coords":[],"patches":[],"instructions":"N"}  | N/A         | -1         | 400      |
+      | 13     | {"roomSize":[2147483648 ,1],"coords":[0,0],"patches":[[0,0]],"instructions":"N"}  | N/A         | -1         | 400      |
+      | 14     | {"roomSize":[1, 2147483648],"coords":[0,0],"patches":[[0,0]],"instructions":"N"}  | N/A         | -1         | 400      |
+      | 15     | {"roomSize":[1, 1],"coords":[2147483648,0],"patches":[[0,0]],"instructions":"N"}  | N/A         | -1         | 400      |
+      | 16     | {"roomSize":[1, 1],"coords":[0, 2147483648],"patches":[[0,0]],"instructions":"N"} | N/A         | -1         | 400      |
+      | 17     | {"roomSize":[1, 1, 1],"coords":[0, 0],"patches":[[0,0]],"instructions":"N"}       | N/A         | -1         | 400      |
+      | 18     | {"roomSize":[1],"coords":[0, 0],"patches":[[0,0]],"instructions":"N"}             | N/A         | -1         | 400      |
+      | 19     | {"roomSize":[1, 1],"coords":[0, 0, 0],"patches":[[0,0]],"instructions":"N"}       | N/A         | -1         | 400      |
+      | 20     | {"roomSize":[1, 1],"coords":[0],"patches":[[0,0]],"instructions":"N"}             | N/A         | -1         | 400      |
+      | 21     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0,0,0]],"instructions":"N"}        | N/A         | -1         | 400      |
+      | 22     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0]],"instructions":"N"}            | N/A         | -1         | 400      |
+      | 23     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0, 0]],"instructions":"news"}      | N/A         | -1         | 400      |
+      | 24     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0, 0]],"instructions":"cool"}      | N/A         | -1         | 400      |
+      | 25     | {"roomSize":[1, 1],"coords":[0, 0],"patches":[[0, 0]],"instructions":"☺"}         | N/A         | -1         | 400      |
+      | 26     | {"roomSize":[0 ,0],"coords":[],"patches":[],"instructions":"N"}                   | N/A         | -1         | 400      |

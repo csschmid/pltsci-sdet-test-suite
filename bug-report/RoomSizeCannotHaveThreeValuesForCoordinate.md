@@ -1,6 +1,6 @@
 ## Problem
 
-Entering 3 values for a patch location should result in a 400 user error code.
+Entering 3 values for a `roomSize` should result in a 400 user error code.
 
 ## More Information
 
@@ -26,13 +26,13 @@ Per the specification:
 1. Start the service locally
 2. Send the following curl
     1. ```shell 
-       curl -v -H 'Content-Type: application/json' -X POST -d '{"roomSize":[-1,-1],"coords":[0,0],"patches":[],"instructions":""}' http://localhost:8080/v1/cleaning-sessions
+       curl -v -H 'Content-Type: application/json' -X POST -d '{"roomSize":[1, 1, 1],"coords":[0, 0],"patches":[[0,0]],"instructions":"N"}' http://localhost:8080/v1/cleaning-sessions
        ```
-3. Notice a `200` response with a payload of `{"coords":[0,0],"patches":0}`
+3. Notice a `200` response with a payload of `{"coords":[0,0],"patches":1}`
 
 ## Expectation
 
-Entering three values for a patch entry is invalid and should result in a 400 error.
+Entering three values for a `roomSize` is invalid and should result in a 400 error.
 
 ## Impact
 
